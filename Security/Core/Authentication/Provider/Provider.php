@@ -10,6 +10,9 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\CredentialsExpiredException;
 use Symfony\Component\Security\Core\Exception\NonceExpiredException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder as PasswordEncoder;
 
 class Provider implements AuthenticationProviderInterface
 {
@@ -28,7 +31,8 @@ class Provider implements AuthenticationProviderInterface
     {
         $user = $this->userProvider->loadUserByUsername($token->getUsername());
 
-        if($user && $this->validateDigest($token->getAttribute('digest'), $token->getAttribute('nonce'), $token->getAttribute('created'), $user->getPassword()))
+        // added salt to validateDigest - hintt
+        if($user && $this->validateDigest($token->getAttribute('digest'), $token->getAttribute('nonce'), $token->getAttribute('created'), $user))
         {
             $authenticatedToken = new Token($user->getRoles());
             $authenticatedToken->setUser($user);
@@ -40,7 +44,8 @@ class Provider implements AuthenticationProviderInterface
         throw new AuthenticationException('WSSE authentication failed.');
     }
 
-    protected function validateDigest($digest, $nonce, $created, $secret)
+    // added salt to validateDigest - hintt
+    protected function validateDigest($digest, $nonce, $created, $user)
     {
         //expire timestamp after specified lifetime
         if(time() - strtotime($created) > $this->lifetime)
@@ -60,8 +65,9 @@ class Provider implements AuthenticationProviderInterface
         }
 
         //validate secret
-        $expected = base64_encode(sha1(base64_decode($nonce).$created.$secret, true));
+        $expected = base64_encode(sha1(base64_decode($nonce). $created .$user->getPassword(), true));
 
+        //print "{$digest} === {$expected}";
         return $digest === $expected;
     }
 

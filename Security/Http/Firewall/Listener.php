@@ -45,7 +45,7 @@ class Listener implements ListenerInterface
         }
 
         $ae_message = null;
-        $this->wsseHeader = $request->headers->get('X-WSSE');
+        $this->wsseHeader = stripslashes( $request->headers->get('X-WSSE'));
         $wsseHeaderInfo = $this->parseHeader();
 
         if($wsseHeaderInfo !== false)
