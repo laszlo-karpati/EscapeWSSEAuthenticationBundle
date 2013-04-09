@@ -20,6 +20,14 @@ composer.json
     "escapestudios/wsse-authentication-bundle": "2.2.x-dev",
     ...
 }
+
+&
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/hintt/EscapeWSSEAuthenticationBundle"
+        }
+    ],
 ```
 
 app/AppKernel.php
@@ -34,14 +42,6 @@ public function registerBundles()
     );
     ...
     
-&
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/hintt/EscapeWSSEAuthenticationBundle"
-        }
-    ],
-
 ```
 
 
