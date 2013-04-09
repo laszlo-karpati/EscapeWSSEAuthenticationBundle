@@ -20,14 +20,12 @@ composer.json
     "escapestudios/wsse-authentication-bundle": "2.2.x-dev",
     ...
 }
-
-&
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/hintt/EscapeWSSEAuthenticationBundle"
-        }
-    ],
+"repositories": [
+    {
+        "type": "git",
+        "url": "https://github.com/hintt/EscapeWSSEAuthenticationBundle"
+    }
+],
 ```
 
 app/AppKernel.php
