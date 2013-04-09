@@ -1,5 +1,5 @@
 {
-    "name": "hintt/wsse-authentication-bundle",
+    "name": "escapestudios/wsse-authentication-bundle",
     "type": "symfony-bundle",
     "description": "Symfony2 bundle to implement WSSE authentication, with FOSUserbundle as user provider and symfony encode as password encoder",
     "keywords": ["wsse", "authentication", "bundle", "FOSUserbundle"],
@@ -31,7 +31,7 @@
         "symfony/security-bundle": "2.2.*"
     },
     "autoload": {
-        "psr-0": { "hintt\\WSSEAuthenticationBundle": "" }
+        "psr-0": { "escapestudios\\WSSEAuthenticationBundle": "" }
     },
-    "target-dir": "hintt/WSSEAuthenticationBundle"
+    "target-dir": "escapestudios/WSSEAuthenticationBundle"
 }
