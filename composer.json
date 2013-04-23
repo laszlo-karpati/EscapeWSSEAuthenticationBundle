@@ -33,7 +33,7 @@
         "symfony/security-bundle": "2.2.*"
     },
     "autoload": {
-        "psr-0": { "escapestudios\\WSSEAuthenticationBundle": "" }
+        "psr-0": { "Escape\\WSSEAuthenticationBundle": "" }
     },
-    "target-dir": "escapestudios/WSSEAuthenticationBundle"
+    "target-dir": "Escape/WSSEAuthenticationBundle"
 }
