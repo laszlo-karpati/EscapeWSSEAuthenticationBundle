@@ -23,7 +23,7 @@ composer.json
 "repositories": [
     {
         "type": "git",
-        "url": "https://github.com/hintt/EscapeWSSEAuthenticationBundle"
+        "url": "https://github.com/laszlo-karpati/EscapeWSSEAuthenticationBundle.git"
     }
 ],
 ```
